@@ -93,7 +93,7 @@ impl BuildConfig {
     fn new() -> Self {
         let out_dir = PathBuf::from(env::var_os("OUT_DIR").expect("OUT_DIR environment not set?"));
         let config_h = out_dir.join("config.h");
-        let mbedtls_src = PathBuf::from(env::var("RUST_MBEDTLS_SYS_SOURCE").unwrap_or("vendor".to_owned()));
+        let mbedtls_src = PathBuf::from(env::var("RUST_MBEDTLS_SYS_SOURCE").unwrap_or(out_dir.join("vendor")));
         let mbedtls_include = mbedtls_src.join("include");
 
         let mut cflags = vec![];
